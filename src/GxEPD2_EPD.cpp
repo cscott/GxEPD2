@@ -9,6 +9,9 @@
 //
 // Library: https://github.com/ZinggJM/GxEPD2
 
+// sigh... stupid platform io dependency stuff
+#include <Wire.h>
+
 #include "GxEPD2_EPD.h"
 
 #if defined(ESP8266) || defined(ESP32)
