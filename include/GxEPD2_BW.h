@@ -175,10 +175,10 @@ class GxEPD2_BW : public GxEPD2_GFX_BASE_CLASS
     {
       if (partial_update_mode) epd2.writeImage(_buffer, 0, 0, WIDTH, _page_height);
       else epd2.writeImageForFullRefresh(_buffer, 0, 0, WIDTH, _page_height);
-      epd2.refresh(partial_update_mode);
+      epd2.refresh(partial_update_mode); // this will do a wait at the end
       if (epd2.hasFastPartialUpdate)
       {
-        epd2.writeImageAgain(_buffer, 0, 0, WIDTH, _page_height);
+        epd2.writeImageAgain(_buffer, 0, 0, WIDTH, _page_height); // no wait
       }
       if (!partial_update_mode) epd2.powerOff();
     }

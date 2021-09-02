@@ -365,6 +365,15 @@ void GxEPD2_154_D67::_Init_Part()
 void GxEPD2_154_D67::_Update_Full()
 {
   _writeCommand(0x22);
+  // MSB
+  // 1 - Enable clock signal
+  // 1 - Enable Analog
+  // 1 - Load temperature value
+  // 1 \ Load LUT with DISPLAY Mode 1
+  // 0 /
+  // 1 - Disable OSC
+  // 0 - Disable Analog
+  // 0 - Disable clock signal
   _writeData(0xf4);
   _writeCommand(0x20);
   _waitWhileBusy("_Update_Full", full_refresh_time);
@@ -373,6 +382,15 @@ void GxEPD2_154_D67::_Update_Full()
 void GxEPD2_154_D67::_Update_Part()
 {
   _writeCommand(0x22);
+  // MSB
+  // 1 - Enable clock signal
+  // 1 - Enable Analog
+  // 1 - Load temperature value
+  // 1 \ Load LUT with DISPLAY Mode 2
+  // 1 /
+  // 1 - Disable OSC
+  // 0 - Disable Analog
+  // 0 - Disable clock signal
   _writeData(0xfc);
   _writeCommand(0x20);
   _waitWhileBusy("_Update_Part", partial_refresh_time);
