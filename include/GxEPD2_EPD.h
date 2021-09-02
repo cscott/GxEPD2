@@ -82,6 +82,13 @@ class GxEPD2_EPD
     virtual void powerOff() = 0; // turns off generation of panel driving voltages, avoids screen fading over time
     virtual void hibernate() = 0; // turns powerOff() and sets controller to deep sleep for minimum power use, ONLY if wakeable by RST (rst >= 0)
     virtual void setPaged() {}; // for GxEPD2_154c paged workaround
+    virtual bool canDeferWait() { return false; } // allow some drivers to defer the actual _waitWhileBusy
+    inline void maybeWait(void) { // call this before initiating SPI commands
+        if (_need_to_wait) {
+            _need_to_wait = false;
+            _reallyWaitWhileBusy();
+        }
+    }
     static inline uint16_t gx_uint16_min(uint16_t a, uint16_t b)
     {
       return (a < b ? a : b);
@@ -93,6 +100,7 @@ class GxEPD2_EPD
   protected:
     void _reset();
     void _waitWhileBusy(const char* comment = 0, uint16_t busy_time = 5000);
+    void _reallyWaitWhileBusy(const char* comment = 0, uint16_t busy_time = 5000);
     void _writeCommand(uint8_t c);
     void _writeData(uint8_t d);
     void _writeData(const uint8_t* data, uint16_t n);
@@ -111,6 +119,7 @@ class GxEPD2_EPD
     bool _initial_write, _initial_refresh;
     bool _power_is_on, _using_partial_mode, _hibernating;
     uint16_t _reset_duration;
+    bool _need_to_wait;
 };
 
 #endif

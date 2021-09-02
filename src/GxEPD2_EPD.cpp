@@ -99,9 +99,23 @@ void GxEPD2_EPD::_reset()
 
 void GxEPD2_EPD::_waitWhileBusy(const char* comment, uint16_t busy_time)
 {
+  if (canDeferWait()) {
+    // Instead of *actually* waiting, just set a flag and then hook
+    // the various _writeCommand options below to actually do the wait
+    // before the next write.
+    _need_to_wait = true;
+  } else {
+    if (_busy >= 0) {
+      delay(1); // add some margin to become active
+    }
+    _reallyWaitWhileBusy(comment, busy_time);
+  }
+}
+
+void GxEPD2_EPD::_reallyWaitWhileBusy(const char* comment, uint16_t busy_time)
+{
   if (_busy >= 0)
   {
-    delay(1); // add some margin to become active
     unsigned long start = micros();
     while (1)
     {
@@ -132,6 +146,7 @@ void GxEPD2_EPD::_waitWhileBusy(const char* comment, uint16_t busy_time)
 
 void GxEPD2_EPD::_writeCommand(uint8_t c)
 {
+  maybeWait();
   SPI.beginTransaction(_spi_settings);
   if (_dc >= 0) digitalWrite(_dc, LOW);
   if (_cs >= 0) digitalWrite(_cs, LOW);
@@ -215,6 +230,7 @@ void GxEPD2_EPD::_writeCommandData(const uint8_t* pCommandData, uint8_t datalen)
 
 void GxEPD2_EPD::_writeCommandDataPGM(const uint8_t* pCommandData, uint8_t datalen)
 {
+  maybeWait();
   SPI.beginTransaction(_spi_settings);
   if (_dc >= 0) digitalWrite(_dc, LOW);
   if (_cs >= 0) digitalWrite(_cs, LOW);
@@ -230,6 +246,7 @@ void GxEPD2_EPD::_writeCommandDataPGM(const uint8_t* pCommandData, uint8_t datal
 
 void GxEPD2_EPD::_startTransfer()
 {
+  maybeWait();
   SPI.beginTransaction(_spi_settings);
   if (_cs >= 0) digitalWrite(_cs, LOW);
 }
