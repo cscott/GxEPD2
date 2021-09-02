@@ -11,7 +11,7 @@
 //
 // Library: https://github.com/ZinggJM/GxEPD2
 
-#include "GxEPD2_750c_Z90.h"
+#include "epd3c/GxEPD2_750c_Z90.h"
 
 GxEPD2_750c_Z90::GxEPD2_750c_Z90(int8_t cs, int8_t dc, int8_t rst, int8_t busy) :
   GxEPD2_EPD(cs, dc, rst, busy, HIGH, 25000000, WIDTH, HEIGHT, panel, hasColor, hasPartialUpdate, hasFastPartialUpdate)

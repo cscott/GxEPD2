@@ -14,7 +14,7 @@
 #ifndef _GxEPD2_213_B73_H_
 #define _GxEPD2_213_B73_H_
 
-#include "../GxEPD2_EPD.h"
+#include "GxEPD2_EPD.h"
 
 class GxEPD2_213_B73 : public GxEPD2_EPD
 {

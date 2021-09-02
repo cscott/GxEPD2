@@ -11,7 +11,7 @@
 //
 // Library: https://github.com/ZinggJM/GxEPD2
 
-#include "GxEPD2_154_T8.h"
+#include "epd/GxEPD2_154_T8.h"
 
 GxEPD2_154_T8::GxEPD2_154_T8(int8_t cs, int8_t dc, int8_t rst, int8_t busy) :
   GxEPD2_EPD(cs, dc, rst, busy, LOW, 10000000, WIDTH, HEIGHT, panel, hasColor, hasPartialUpdate, hasFastPartialUpdate)

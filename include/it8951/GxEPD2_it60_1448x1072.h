@@ -17,7 +17,7 @@
 #ifndef _GxEPD2_it60_1448x1072_H_
 #define _GxEPD2_it60_1448x1072_H_
 
-#include "../GxEPD2_EPD.h"
+#include "GxEPD2_EPD.h"
 
 class GxEPD2_it60_1448x1072 : public GxEPD2_EPD
 {

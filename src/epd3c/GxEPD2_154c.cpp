@@ -10,7 +10,7 @@
 //
 // Library: https://github.com/ZinggJM/GxEPD2
 
-#include "GxEPD2_154c.h"
+#include "epd3c/GxEPD2_154c.h"
 
 const uint8_t GxEPD2_154c::bw2grey[] =
 {

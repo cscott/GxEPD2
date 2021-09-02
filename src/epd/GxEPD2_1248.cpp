@@ -11,7 +11,7 @@
 //
 // Library: https://github.com/ZinggJM/GxEPD2
 
-#include "GxEPD2_1248.h"
+#include "epd/GxEPD2_1248.h"
 
 #if defined(ESP32)
 // general constructor for use with all parameters on ESP32, e.g. for Waveshare ESP32 driver board mounted on connection board

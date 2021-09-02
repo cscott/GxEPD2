@@ -14,7 +14,7 @@
 #ifndef _GxEPD2_154_T8_H_
 #define _GxEPD2_154_T8_H_
 
-#include "../GxEPD2_EPD.h"
+#include "GxEPD2_EPD.h"
 
 class GxEPD2_154_T8 : public GxEPD2_EPD
 {

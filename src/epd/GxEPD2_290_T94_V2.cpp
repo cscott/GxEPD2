@@ -14,7 +14,7 @@
 //
 // note: this is a driver class variant for the Waveshare V2 board with controller without partial update wft in OTP
 
-#include "GxEPD2_290_T94_V2.h"
+#include "epd/GxEPD2_290_T94_V2.h"
 
 GxEPD2_290_T94_V2::GxEPD2_290_T94_V2(int8_t cs, int8_t dc, int8_t rst, int8_t busy) :
   GxEPD2_EPD(cs, dc, rst, busy, HIGH, 10000000, WIDTH, HEIGHT, panel, hasColor, hasPartialUpdate, hasFastPartialUpdate)

@@ -13,7 +13,7 @@
 #ifndef _GxEPD2_213_T5D_H_
 #define _GxEPD2_213_T5D_H_
 
-#include "../GxEPD2_EPD.h"
+#include "GxEPD2_EPD.h"
 
 class GxEPD2_213_T5D : public GxEPD2_EPD
 {

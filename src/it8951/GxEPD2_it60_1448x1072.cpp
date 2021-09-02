@@ -14,7 +14,7 @@
 //
 // Library: https://github.com/ZinggJM/GxEPD2
 
-#include "GxEPD2_it60_1448x1072.h"
+#include "it8951/GxEPD2_it60_1448x1072.h"
 
 #define VCOM  1500 //e.g. -1.53 = 1530 = 0x5FA
 
